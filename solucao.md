@@ -1,5 +1,7 @@
 # Soluções
 
+## Gabrielle Aparecida Palma RA: 6324589
+
 ## Erro 1: arquivo Dockerfile, linha 11
 Porta exposta incorreta (deveria ser 3000)
 
@@ -20,3 +22,4 @@ mudança de mongodb para mongo devido a mudança no container
 
 ## ERRO 7: arquivo docker-compose.yml, linha 10
 /tmp/ não existe na maquina, apaga e deixa /data/
+
