@@ -1,0 +1,21 @@
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/desafio
+    restart: always
+    
+
+volumes:
+  mongodb_data:
