@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  mongodb:
+  mongo:
     image: mongo:latest
-    container_name: mongodb         
+    container_name: mongo        
     ports:
       - "27017:27017"                     
     restart: unless-stopped         
@@ -14,7 +14,4 @@ services:
     ports:
       - "3000:3000"             
     depends_on:
-      - mongodb
-    restart: unless-stopped
-    environment:
-      - mongoURI = 'mongodb://mongo:27017/desafio'
+      - mongo

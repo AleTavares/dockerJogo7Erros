@@ -1,3 +1,7 @@
+Nome: Leonardo Frazao Sano
+RA: 6324073
+
+
 # Solução do Desafio dos 7 Erros - Docker, Node.js e MongoDB
 
 ## Erro 1: Porta incorreta no docker-compose.yml
@@ -27,7 +31,7 @@
 ## Erro 5: Nome do host do MongoDB na aplicação
 - **Problema:** A aplicação provavelmente usava `localhost` para se conectar ao MongoDB.
 - **Correção:** Corrigido no código para usar `mongodb` (nome do serviço no `docker-compose`), como:  
-  `mongodb://mongodb:27017/nomedobanco`
+  `mongo://mongodb:27017/nomedobanco`
 
 ---
 
@@ -44,5 +48,3 @@
   COPY package*.json ./
   RUN npm install
 
-Nome: Leonardo Frazao Sano
-RA: 6324073
