@@ -1,16 +1,17 @@
-version: '3.8'
+version: '3.9'
 
 services:
   mongodb:
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "27017:27017"  # A porta correta do MongoDB
     volumes:
-      - /tmp/data:/data/db
+      - ./data:/data/db  # Persistência dos dados
+
   app:
-    build: ./app
+    build: ./app  # Construindo a imagem da aplicação a partir do diretório ./app
     ports:
-      - "8080:8080"
+      - "3000:3000"  # A porta da aplicação Node.js
     depends_on:
-      - mongodb
+      - mongodb  # Garante que o MongoDB esteja rodando antes da aplicação
     restart: always
