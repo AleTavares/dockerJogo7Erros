@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   mongo:
-    image: mongo:latest
+    image: mongo:latest # 6º ERRO: Nome da imagem incorreto. O correto seria mongo:latest
     ports:
       - "27017:27017" # ERRO 4: Porta configurada incorretamente. O correto é "27017:27017"
     volumes:
@@ -12,5 +12,5 @@ services:
     ports:
       - "3000:3000"  # ERRO 3: Configuração incorreta da porta. O correto seria "3000:3000"
     depends_on:
-      - mongo
+      - mongo # ERRO 7: Dependência incorreta. O correto seria depends_on: - mongo
     restart: always
