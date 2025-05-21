@@ -3,14 +3,30 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
-    ports:
-      - "27018:27017"
+    # ports: # Removido: Não é necessário expor o MongoDB para o host
+    #   - "27018:27017"
     volumes:
-      - /tmp/data:/data/db
+      - mongodb-data:/data/db # ERRO 3 CORRIGIDO: Usando volume nomeado
+    networks: # ERRO 4 CORRIGIDO: Conectando à rede personalizada
+      - app-network
+
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000" # ERRO 1 CORRIGIDO: Mapeamento de porta para 3000
+    environment: # ERRO 2 CORRIGIDO: Variáveis de ambiente para conexão e porta
+      - MONGO_URI=mongodb://mongodb:27017/desafio
+      - PORT=3000
     depends_on:
       - mongodb
     restart: always
+    networks: # ERRO 4 CORRIGIDO: Conectando à rede personalizada
+      - app-network
+
+networks: # ERRO 4 CORRIGIDO: Definição da rede personalizada
+  app-network:
+    driver: bridge
+
+volumes: # ERRO 3 CORRIGIDO: Definição do volume nomeado
+  mongodb-data:
+  
