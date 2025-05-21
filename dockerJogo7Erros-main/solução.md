@@ -1,9 +1,6 @@
 # Nome: Pedro Kommers Medke  
 # RA: 6324623
 
-Abaixo estão os 7 erros encontrados e como cada um foi corrigido:
-
----
 
 # Erro 1
 
