@@ -1,16 +1,17 @@
 version: '3.8'
 
 services:
-  mongodb:
+  mongo: #ERRO 6 - erro de sintaxe
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "27017:27017" #ERRO 3- na porta exposta 27018
     volumes:
-      - /tmp/data:/data/db
+      - /mongodb_data:/data/db
+      
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000" #Erro 5-  na porta era pra ser 3000:3000
     depends_on:
-      - mongodb
+      - mongo #ERRO 4- erro de sintaxe
     restart: always
