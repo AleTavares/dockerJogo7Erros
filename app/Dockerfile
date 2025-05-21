@@ -2,14 +2,17 @@ FROM node:16
 
 WORKDIR /app
 
+# Copia os arquivos de dependências para dentro do container
 COPY package*.json ./
 
+# Instala as dependências
 RUN npm install
 
+# Copia todo o código da aplicação para dentro do container
 COPY . .
 
-# ERRO 1: Porta exposta incorreta (deveria ser 3000)
-EXPOSE 8080
+# Expõe a porta 3000, que é onde a aplicação vai rodar
+EXPOSE 3000
 
-# ERRO 2: Comando de inicialização incorreto (deveria ser "npm start" ou "node index.js")
-CMD ["node", "app.js"]
+# Comando para iniciar a aplicação
+CMD ["node", "index.js"]
