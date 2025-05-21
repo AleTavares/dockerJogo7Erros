@@ -1,16 +1,32 @@
 version: '3.8'
 
 services:
-  mongodb:
+  mongo:
     image: mongo:latest
-    ports:
-      - "27018:27017"
+    ports: 
+      - "27017:27017" #
+
     volumes:
-      - /tmp/data:/data/db
+      - mongodb-data:/data/db   # Volume corretamente nomeado
+    networks:
+      - app-network # conectando a uma rede personalizada
+
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000" # erro de porta estava com a porta errada
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/desafio # endereço estava difernete do index tinha que mudar aqui para ter conecxao
+      - PORT=3000
     depends_on:
-      - mongodb
+      - mongo
     restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:  # Volume nomeado corretamente como mongo db
