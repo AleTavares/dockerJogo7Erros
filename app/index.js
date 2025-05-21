@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Configuração do MongoDB
-const mongoURI = 'mongodb://mongo:27017/desafio';
+const mongoURI = 'mongodb://mongo:27017/desafio'; //ERRO 7 - nome diferente do nome do container
 
 // Conexão com o MongoDB
 mongoose.connect(mongoURI)
