@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  mongodb:
+  mongo: #Erro 3: Nome do serviço(container) errado
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "27017:27017" #Erro 4: Porta externa incorreta (27018)
     volumes:
-      - /tmp/data:/data/db
+      - /data/db #Erro 5: Path do volume errado
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000" #Erro 6: Porta corrigida para ser igual do Dockerfile
     depends_on:
-      - mongodb
+      - mongo #erro 7: Correção de nome do container
     restart: always
