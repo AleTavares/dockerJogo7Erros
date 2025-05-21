@@ -1,16 +1,18 @@
 version: '3.8'
 
 services:
-  mongodb:
+  mongo:
     image: mongo:latest
+    container_name: mongo
     ports:
-      - "27017:27017"
+      - "27017:27017"  # só se você quiser acessar de fora do container
     volumes:
-      - /tmp/data:/data/db
+      - /mongodb_data:/data/db
+
   app:
     build: ./app
     ports:
-      - "3000:3000"
+      - "3000:3000"  # sua aplicação está ouvindo na porta 3000
     depends_on:
-      - mongodb
+      - mongo
     restart: always

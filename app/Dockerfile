@@ -12,4 +12,4 @@ COPY . .
 EXPOSE 3000
 
 # ERRO 2: Comando de inicialização incorreto (deveria ser "npm start" ou "node index.js")
-CMD ["npm", "start"]
+CMD ["node", "index.js"]
