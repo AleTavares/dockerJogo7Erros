@@ -5,7 +5,8 @@ const app = express();
 const port = 3000;
 
 // Configuração do MongoDB
-const mongoURI = 'mongodb://mongo:27017/desafio';
+const mongoURI = 'mongodb://mongodb:27017/desafio';
+
 
 // Conexão com o MongoDB
 mongoose.connect(mongoURI)
