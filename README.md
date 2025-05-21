@@ -35,9 +35,7 @@ No entanto, existem 7 erros nos arquivos de configuração que impedem a aplica�
    - http://localhost:3000/itens (API para listar itens)
 7. Teste a criação de um item com:
    ```
-   curl -X POST http://localhost:3000/itens \
-     -H "Content-Type: application/json" \
-     -d '{"nome": "Item de teste", "descricao": "Descrição do item de teste"}'
+
    ```
 8. Após corrigir todos os erros, faça um pull request para o repositório original
 
@@ -85,7 +83,10 @@ No entanto, existem 7 erros nos arquivos de configuração que impedem a aplica�
 1. Acesse seu fork no GitHub
 2. Clique no botão "Compare & pull request" que aparecerá no topo
 3. Verifique se a base repository é o repositório original e o head repository é o seu fork
-4. Adicione um título descritivo como "Correção dos 7 erros do desafio"
+4. Adicio   
+   curl -X POST http://localhost:3000/itens \
+     -H "Content-Type: application/json" \
+     -d '{"nome": "Item de teste", "descricao": "Descrição do item de teste"}'ne um título descritivo como "Correção dos 7 erros do desafio"
 5. No corpo do PR, liste os erros encontrados e como você os corrigiu
 6. Clique em "Create pull request"
 
