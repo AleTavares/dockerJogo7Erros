@@ -3,14 +3,25 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
+    networks:
+      - minha_rede
     ports:
       - "27018:27017"
     volumes:
-      - /tmp/data:/data/db
+#      - /tmp/data:/data/db
+       - .:/app
+
   app:
     build: ./app
+    networks:
+      - minha_rede
     ports:
-      - "8080:8080"
+      - "3000:3000"
     depends_on:
       - mongodb
     restart: always
+
+networks:
+  minha_rede:
+    driver: bridge
+
