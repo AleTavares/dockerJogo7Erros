@@ -3,14 +3,27 @@ version: '3.8'
 services:
   mongodb:
     image: mongo:latest
-    ports:
-      - "27018:27017"
+    # Exposição removida 
     volumes:
-      - /tmp/data:/data/db
+      - mongodb-data:/data/db # Definir volume
+    networks: # Adiçao da rede
+      - aula-erros-network
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000" # Mudança para a porta correta
+    environment: # Variáveis de ambiente pra conexão do mongo
+      - MONGO_URI=mongodb://mongodb:27017/desafio
+      - PORT=3000
     depends_on:
       - mongodb
     restart: always
+    networks: # Adição da rede
+      - aula-erros-network
+
+networks: # Adição da rede
+  aula-erros-network:
+    driver: bridge
+
+volumes: # Definir Volume
+  mongodb-data:
