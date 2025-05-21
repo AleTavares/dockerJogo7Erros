@@ -1,16 +1,27 @@
 version: '3.8'
 
 services:
-  mongodb:
+  
+  mongo:
     image: mongo:latest
-    ports:
-      - "27018:27017"
     volumes:
       - /tmp/data:/data/db
+    networks:
+      - app-network
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/desafio
+      - PORT=3000
     depends_on:
       - mongodb
     restart: always
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  mongodb-data:    
