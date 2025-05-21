@@ -1,3 +1,6 @@
+GABRIEL SANTIAGO DE ANDRADE
+RA6324647
+
 ERRO 1 - A porta 8080 esta incorreta (o certo seria 3000)
 
 ERRO 2 - Comando de inicializao esta incorreto (o certo "npm start")
