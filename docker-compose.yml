@@ -1,16 +1,16 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  mongodb:
+  mongo:
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "27017:27017" # ERRO 4: Porta configurada incorretamente. O correto é "27017:27017"
     volumes:
-      - /tmp/data:/data/db
+      - ./data:/data/db # ERRO 5: Volume incorretamente definido. O correto é ./data:/data/db
   app:
     build: ./app
     ports:
-      - "8080:8080"
+      - "3000:3000"  # ERRO 3: Configuração incorreta da porta. O correto seria "3000:3000"
     depends_on:
-      - mongodb
+      - mongo
     restart: always
